@@ -1,0 +1,201 @@
+
+<script type="text/javascript" src="raphael-min.js"></script>
+<script type="text/javascript" src="ftree.min.js"></script>
+
+<script type="text/javascript">
+
+    window.onload = function () {
+
+    // set person objectsfor the first family tree
+    
+        var paul = {
+            'first_name': 'Paul', 
+            'middle_name': 'Alan',
+            'last_name': 'Wells', 
+            'gender': 'M',
+        };
+        
+        var linda = {
+            'first_name': 'Linda', 
+            'last_name': 'Compton', 
+            'gender': 'F',
+            'partner': paul
+        };
+
+        var george = {
+            'first_name': 'George', 
+            'last_name': 'Wells', 
+            'gender': 'M',
+            'father': paul,
+            'mother': linda
+        };    
+
+        
+        // prepare settings just to show the name, everything else is set by default
+        
+        var settings = {
+            getText: function (person) {  return getFullName(person) }
+        };
+        
+        // create the first tree
+        var ft = new familyTree([paul, linda, george], settings);
+        ft.show();
+        
+        // set person objects for the second family tree
+       
+        var john = {
+            'first_name': 'John', 
+            'last_name': 'Gordon', 
+            'gender': 'M',
+        };
+        
+        var mary = {
+            'first_name': 'Mary', 
+            'last_name': 'Cromwell', 
+            'gender': 'F',
+            'partner': john
+        };
+        
+        var bill = {
+            'first_name': 'Bill', 
+            'last_name': 'Gordon', 
+            'gender': 'M',
+            'father': john,
+            'mother': mary
+        };        
+        
+        var ann = {
+            'first_name': 'Ann', 
+            'last_name': 'Gordon', 
+            'gender': 'F',
+            'father': john,
+            'mother': mary
+        };
+        
+        
+        var kate = {
+            'first_name': 'Kate', 
+            'last_name': 'Gordon', 
+            'gender': 'F',
+            'father': john,
+            'mother': mary
+        };
+        
+        var steve = {
+            'first_name': 'Steve', 
+            'last_name': 'Nordman', 
+            'gender': 'M',
+            'partner': kate
+        };    
+    
+        var susan = {
+            'first_name': 'Susan', 
+            'last_name': 'Aprile', 
+            'gender': 'F',
+            'partner': bill
+        };
+        
+        var laura = {
+            'first_name': 'Laura', 
+            'last_name': 'Gordon', 
+            'gender': 'F',
+            'deceased': 'N',
+            'father': bill,
+            'mother': susan
+        };
+        
+               
+        // singletons, just to show the way singletons look like in the tree
+            
+        var carl = {
+            'first_name': 'Carl', 
+            'last_name': 'Nightingale',
+            'gender': 'M'
+        };
+
+        var alice = {
+            'first_name': 'Alice', 
+            'last_name': 'Horan',
+            'gender': 'F',
+            'partner': carl
+        };
+
+        
+        var fred = {
+            'first_name': 'Fred', 
+            'last_name': 'Nightingale',
+            'father': carl,
+            'mother': alice
+        };
+
+        var bob = {
+            'first_name': 'Bob', 
+            'last_name': 'Nightingale',
+            'father': carl,
+            'mother': alice
+        };
+
+        var tom = {
+            'first_name': 'Tom', 
+            'last_name': 'Nightingale',
+            'father': carl,
+            'mother': alice
+        };        
+
+        var james = {
+            'first_name': 'James', 
+            'last_name': 'Nightingale',
+            'father': carl,
+            'mother': alice
+            
+        };        
+
+        // prepare settings for the second tree
+        var settings2 = {
+            color: '#009',
+            fillColor: '#0d0',
+            maleFillColor: '#e55',
+            femaleFillColor: '#5ee',
+            strokeColor: '#0f0',
+            mouseoverColor: '#777',
+            startX: 600,
+            startY: 150,
+            width: 100,
+            height: 100,
+            vDistance: 70,
+            hDistance: 70,
+            fontSize: '12',  
+            onClick: function (person) { alert(person.first_name + ' ' + person.last_name); },
+            getText: function (person) {  return getFullName(person) } 
+        };        
+        
+        // create the second tree
+        var ft2 = new familyTree([john, kate, mary, bill, susan, alice, steve, ann, carl, fred, bob, tom, james], settings2); 
+        ft2.show(); 
+}
+
+    // get full name (first name + middle name + last name) for a person
+    function getFullName(person) {
+
+        var fullName = '';
+
+        if (person.first_name) {
+            fullName = fullName + person.first_name + '\n';
+        }
+        else {
+            fullName = fullName + 'Unknown\n';
+        }
+
+        if (person.middle_name) {
+            fullName = fullName + person.middle_name + '\n';
+        }
+
+        if (person.last_name) {
+            fullName = fullName + person.last_name;
+        }
+
+        return fullName;
+    }
+
+</script>
+
