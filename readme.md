@@ -39,7 +39,7 @@ You don't have to set the partnership from both sides, i.e., if *a.partner = b*,
 
 Note that you don't have to specify children or siblings: information about parents is enough to build the tree.
 
-Both parent must be present!
+Both parents must be present!
 
 *settings* is an object which sets properties for all the tree. You can use the following attributes:
 
