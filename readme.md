@@ -12,7 +12,7 @@ So far the following constrains exist:
 
 <h2>How it works</h2>
 
-The key concept in drawing the tree is a *generation*. All the persons are sorted accoriding to their generations in order to be drawn correctly.
+The key concept in drawing the tree is a *generation*. All the persons are sorted according to their generations in order to be drawn correctly.
 
 Persons which don't have any connection to other persons are designated as *singletons* and are drawn at the bottom in a line.
 
@@ -36,6 +36,8 @@ Each object may contain any attributes, but some names are hardcoded and, if use
 Other fields may include first name, last name, date of birth and so on (see the Example page).
 
 You don't have to set the partnership from both sides, i.e., if *a.partner = b*, then *b.partner* will be set to *a*.
+
+You can set persons' partners and parents both as objects and id's. For example, if *a.id = 1*, then *b.partner = a* and *b.partner = 1* mean the same. The id field must be an integer. It may be convenient to use id's when you load persons information from the server.
 
 Note that you don't have to specify children or siblings: information about parents is enough to build the tree.
 

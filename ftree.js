@@ -40,6 +40,11 @@ function familyTree(persons, settings) {
     this.generations = [];
     this.singletons = [];
 
+    // converting id's to object pointers
+    for (var i=0; i!=persons.length; i++) {
+        checkRelations(persons[i], persons);
+    }
+
     // check data integrity
     for (var i=0; i!=persons.length; i++) {
         if ((persons[i].partner) || (persons.indexOf(persons[i].partner) !== -1)) {
@@ -738,15 +743,49 @@ function familyTree(persons, settings) {
             if (generation != -1) {
                 return i;
             }
-            
-/*            for (var j=0; j!=generations[i].length; j++) {
-                if (generations[i][j] === person) {
-                    return i;
-                }
-            }
-*/
         }
         return -1;
+    }
+    
+    
+    // check 
+    function checkRelations(person, persons) {
+
+        others = [person.father, person.mother, person.partner];
+        
+        for (var i=0; i!=others.length; i++) {
+        
+            if (others[i]) {
+                
+                if (isInt(others[i])) {
+                    
+                    for (var j=0; j!=persons.length; j++) {
+                        if (persons[j].id === others[i]) {
+                            switch (i) {
+                            case 0:
+                                person.father = persons[j];    
+                            break;
+                            case 1:
+                                person.mother = persons[j];    
+                            break;
+                            case 2:
+                                person.partner = persons[j];    
+                            break;
+                            }
+                            break;
+                        }
+                    }
+                    
+                }
+            }
+        }
+        
+        function isInt(value) {
+          return !isNaN(value) && 
+                 parseInt(Number(value)) == value && 
+                 !isNaN(parseInt(value, 10));
+        }           
+        
     }
     
         
