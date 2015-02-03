@@ -1,0 +1,7 @@
+version 1.1 03 February 2015
+  
+- multiple partners feature added.
+- new parameters added: active_person, active_partner, maleBorderColor, femaleBorderColor, mouseoverMaleBorderColor, mouseoverFemaleBorderColor, blur, radius.
+- gender designations 'M' and 'F' changed to more straightforward and readable 'male' and 'female'.
+- 'singleton' objects removed: all person objects are processed, but only connected together are shown.
+- a few minor bugs fixed.
